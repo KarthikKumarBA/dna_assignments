@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-test-app
+  labels:
+    app: dns-test-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dns-test-app
+  template:
+    metadata:
+      labels:
+        app: dns-test-app
+    spec:
+      containers:
+      - name: dns-test-app
+        image: congtaojiang/whoami-nodejs-express
+        ports:
+        - containerPort: 8080

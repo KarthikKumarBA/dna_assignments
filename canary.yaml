@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-test-app-canary
+  labels:
+    app: dns-test-app-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dns-test-app-canary
+  template:
+    metadata:
+      labels:
+        app: dns-test-app-canary
+    spec:
+      containers:
+      - name: dns-test-app-canary
+        image: emilevauge/whoami
+        ports:
+        - containerPort: 80
